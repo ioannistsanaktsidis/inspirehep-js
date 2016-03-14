@@ -17,7 +17,6 @@ Tests
 
     $ npm test
 
-
 How to use?
 -----------
 

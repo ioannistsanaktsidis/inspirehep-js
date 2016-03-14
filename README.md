@@ -5,8 +5,6 @@ Inspirehep-Js
 [![Coverage](https://img.shields.io/coveralls/inspirehep/inspirehep-js.svg)](https://coveralls.io/r/inspirehep/inspirehep-js)
 [![LICENSE](https://img.shields.io/github/license/inspirehep/inspirehep-js.svg)](https://github.com/inspirehep/inspirehep-js/blob/master/LICENSE)
 
-Inspirehep Angular JS module used in http://labs.inspirehep.net.
-
 Installation
 ------------
 

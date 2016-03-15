@@ -30,7 +30,21 @@
             'Accept': 'application/x-latexus'
           };
           break;
-        // Add default ?
+        case 'CV format (LaTex)':
+          params['headers'] = {
+            'Accept': 'application/x-cvformatlatex'
+          };
+          break;
+        case 'CV format (html)':
+          params['headers'] = {
+            'Accept': 'application/x-cvformathtml'
+          };
+          break;
+        case 'CV format (text)':
+          params['headers'] = {
+            'Accept': 'application/x-cvformattext'
+          };
+          break;
       }
       return $http.get(record_api, params);
     }

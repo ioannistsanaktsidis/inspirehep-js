@@ -1,7 +1,9 @@
 (function(angular) {
 
   angular.module('inspirehep', [
-    'citemodal'
+    'citemodal',
+    'export',
+    'checkbox'
   ]);
 
 })(angular);

@@ -5,14 +5,14 @@
 <div class="modal-body">
   <div class="row">
     <div class="col-md-12">
-      <pre><div class="textarea-cite" id="copy-format" ng-bind-html="vm.exportContent" ></div></pre>
+      <pre><div class="cite-record" id="copy-all-formats" ng-bind-html="vm.exportAllContent"></div></pre>
     </div>
   </div>
 </div>
 <div class="modal-footer">
   <div class="row">
     <div class="col-md-6 text-left">
-      <button uib-tooltip="Copied!" tooltip-placement="bottom" tooltip-trigger="click" class="btn btn-default copy-clp" ngclipboard data-clipboard-target="#copy-format" >
+      <button uib-tooltip="Copied!" tooltip-placement="bottom" tooltip-trigger="click" class="btn btn-default copy-clp" ngclipboard data-clipboard-target="#copy-all-formats" >
         <i class="fa fa-clipboard pointer"></i> Copy to clipboard
       </button>
     </div>

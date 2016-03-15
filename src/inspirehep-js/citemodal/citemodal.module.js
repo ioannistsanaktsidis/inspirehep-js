@@ -1,6 +1,7 @@
 (function(angular) {
 
   angular.module('citemodal', [
+    'ngclipboard',
     'ui.bootstrap',
     'citemodal.directives',
     'citemodal.services',

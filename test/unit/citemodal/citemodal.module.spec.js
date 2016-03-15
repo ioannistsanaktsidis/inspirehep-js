@@ -39,6 +39,10 @@ describe('Unit: testing dependencies', function() {
     dependencies = module.requires;
   });
 
+  it('should load ngclipboard module', function() {
+    expect(hasModule('ngclipboard')).to.be.ok;
+  });
+
   it('should load ui bootstrap module', function() {
     expect(hasModule('ui.bootstrap')).to.be.ok;
   });

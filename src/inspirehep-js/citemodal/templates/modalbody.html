@@ -5,14 +5,14 @@
 <div class="modal-body">
   <div class="row">
     <div class="col-md-12">
-      <textarea ng-model="vm.exportContent"></textarea>
+      <pre><div class="export-content" id="copy-format" ng-bind-html="vm.exportContent" ></div></pre>
     </div>
   </div>
 </div>
 <div class="modal-footer">
   <div class="row">
     <div class="col-md-6 text-left">
-      <button class="btn btn-default copy-clp" id="copy-single-record-clipboard{{record.id}}" data-toggle="tooltip" data-placement="bottom" data-clipboard-target="#singleRecord{{record.id}}" data-original-title="Copied!">
+      <button uib-tooltip="Copied!" tooltip-placement="bottom" tooltip-trigger="click" class="btn btn-default copy-clp" ngclipboard data-clipboard-target="#copy-format" >
         <i class="fa fa-clipboard pointer"></i> Copy to clipboard
       </button>
     </div>
@@ -23,11 +23,11 @@
       </button>
       <ul uib-dropdown-menu role="menu" aria-labelledby="format-single-button">
         <li role="menuitem">
-          <a ng-click="vm.changeFormat(format)" class="pointer bibtex" ng-repeat="format in vm.formats">{{format}}</a>
+          <a ng-click="vm.changeFormat(format)" class="pointer bibtex" ng-repeat="(format, extension) in vm.formats">{{format}}</a>
         </li>
       </ul>
     </div>
-    <a type="button" id="download{{record.id}}" class="btn btn-primary"><i class="fa fa-download"></i> Download</a>
+    <a type="button" ng-click="vm.downloadFormat()" class="btn btn-primary"><i class="fa fa-download"></i> Download</a>
     </div>
   </div>
 </div>

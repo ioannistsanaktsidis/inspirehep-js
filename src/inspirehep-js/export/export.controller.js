@@ -1,6 +1,6 @@
 (function(angular) {
 
-  function modalInstanceCtrl($scope, $uibModalInstance, exportAPI, recid) {
+  function exportModalInstanceCtrl($scope, $uibModalInstance, exportAPI, exportRecords) {
     var vm = this;
 
     vm.formats = {
@@ -12,11 +12,11 @@
       'CV format (text)': 'txt'
     };
 
-    // Record id to export
-    vm.recid = recid;
+    // This will contain the recids to export
+    vm.recidsToExport = [];
 
     // This will contain the export text
-    vm.exportContent = null;
+    vm.exportAllContent = null;
 
     // Keeps loading state
     vm.loading = false;
@@ -44,13 +44,14 @@
     }
 
     function changeFormat(format) {
-       vm.exportFormat = format;
+      vm.exportAllContent = '';
+      vm.exportFormat = format;
     }
 
     function downloadFormat(){
-      var blob = new Blob([ vm.exportContent ], { type : 'text/plain' });
-      var response_data = 'text/plain;charset=utf-8,' + encodeURIComponent(vm.exportContent);
-      var trigger_element = angular.element('<a id="data-download" href="data:' +
+      var blob = new Blob([ vm.exportAllContent ], { type : 'text/plain' });
+      var response_data = 'text/plain;charset=utf-8,' + encodeURIComponent(vm.exportAllContent);
+      var trigger_element =angular.element('<a id="data-download" href="data:' +
           response_data + '" download="' + vm.exportFormat +
           '.' + vm.formats[vm.exportFormat] + '">download</a>');
       trigger_element[0].click();
@@ -68,13 +69,16 @@
 
       vm.loading = true;
 
+      vm.recidsToExport = exportRecords.getIdsToExport();
+      
       exportAPI
-        .getFormat(vm.exportFormat, vm.recid)
-        .then(successfulRequest, erroredRequest)
-        .finally(clearRequest);
+          .getFormat(vm.exportFormat, vm.recidsToExport)
+          .then(successfulRequest, erroredRequest)
+          .finally(clearRequest);      
 
       function successfulRequest(response) {
-        vm.exportContent = response.data;
+        vm.exportAllContent = response.data;
+        
       }
 
       function erroredRequest(data) {
@@ -90,9 +94,9 @@
    
   }
 
-  modalInstanceCtrl.$inject = ['$scope', '$uibModalInstance', 'exportAPI', 'recid'];
+  exportModalInstanceCtrl.$inject = ['$scope', '$uibModalInstance', 'exportAPI', 'exportRecords'];
 
-  angular.module('citemodal.controllers', [])
-    .controller('modalInstanceCtrl', modalInstanceCtrl);
+  angular.module('export.controllers', [])
+    .controller('exportModalInstanceCtrl', exportModalInstanceCtrl);
 
 })(angular);

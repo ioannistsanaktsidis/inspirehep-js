@@ -2,17 +2,17 @@
   <button ng-click="vm.closeModal()" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h4 class="modal-title">Cite Article</h4>
 </div>
-<div class="modal-body">
+<div class="modal-body modal-body-scrollable">
   <div class="row">
     <div class="col-md-12">
-      <pre><div class="export-content" id="copy-format" ng-bind-html="vm.exportContent" ></div></pre>
+      <pre><div class="export-content" id="copy-all-formats" ng-bind-html="vm.exportAllContent"></div></pre>
     </div>
   </div>
 </div>
 <div class="modal-footer">
   <div class="row">
     <div class="col-md-6 text-left">
-      <button uib-tooltip="Copied!" tooltip-placement="bottom" tooltip-trigger="click" class="btn btn-default copy-clp" ngclipboard data-clipboard-target="#copy-format" >
+      <button uib-tooltip="Copied!" tooltip-placement="bottom" tooltip-trigger="click" class="btn btn-default copy-clp" ngclipboard data-clipboard-target="#copy-all-formats" >
         <i class="fa fa-clipboard pointer"></i> Copy to clipboard
       </button>
     </div>
@@ -31,3 +31,4 @@
     </div>
   </div>
 </div>
+
